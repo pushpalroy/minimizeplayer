@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.systemBarsPadding
 import com.pushpal.minimizeplayer.ui.theme.MinPlayerTheme
-import com.pushpal.minimizeplayer.ui.timelines.BasicTimeLine
+import com.pushpal.minimizeplayer.ui.timelines.BasicPlayer
 
 @Composable
 fun HomeScreen() {
@@ -67,7 +67,7 @@ fun HomeContent(
     }
 
     when (selectedIndex) {
-      0 -> BasicTimeLine()
+      0 -> BasicPlayer()
     }
   }
 }

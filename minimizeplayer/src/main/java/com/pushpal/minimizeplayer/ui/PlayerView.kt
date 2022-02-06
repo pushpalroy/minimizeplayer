@@ -1,5 +1,7 @@
 package com.pushpal.minimizeplayer.ui
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -7,7 +9,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons.Filled
@@ -21,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
-import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.ExperimentalMotionApi
 import androidx.constraintlayout.compose.MotionLayout
 import androidx.constraintlayout.compose.layoutId
@@ -32,161 +32,79 @@ fun PlayerView() {
   var animateToEnd by remember { mutableStateOf(false) }
   val progress by animateFloatAsState(
     targetValue = if (animateToEnd) 1f else 0f,
-    animationSpec = tween(800)
+    // animationSpec = spring(
+    //   dampingRatio = 0.4f,
+    //   stiffness = 200f
+    // )
+    animationSpec = tween(
+      delayMillis = 100,
+      durationMillis = 600,
+      easing = LinearOutSlowInEasing
+    )
   )
 
-  Column(Modifier.background(Color.White)) {
+  BackHandler(enabled = animateToEnd) {
+    animateToEnd = animateToEnd.not()
+  }
+
+  Column(
+    Modifier.background(
+      color = Color(0xFF263646)
+    )
+  ) {
     MotionLayout(
-      start = ConstraintSet(
-        """ {
-                background: { 
-                  width: "spread",
-                  height: 70,
-                  start: ['parent', 'start', 0],
-                  bottom: ['parent', 'bottom', 0],
-                  end: ['parent', 'end', 0]
-                },
-                v1: { 
-                  width: 100,
-                  height: 70,
-                  start: ['parent', 'start', 0],
-                  bottom: ['parent', 'bottom', 0]
-                },
-                title: { 
-                  width: "spread",
-                  start: ['v1', 'end', 16],
-                  top: ['v1', 'top', 16],
-                  end: ['parent', 'end', 8],
-                  custom: {
-                    textSize: 16
-                  }
-                },
-                description: { 
-                  start: ['v1', 'end',16],
-                  top: ['title', 'bottom', 0],
-                  custom: {
-                    textSize: 14
-                  }
-                },
-                list: { 
-                  width: "spread",
-                  height: 0,
-                  start: ['parent', 'start', 8],
-                  end: ['parent', 'end', 8],
-                  top: ['parent', 'bottom', 0]
-                },
-                play: { 
-                  end: ['close', 'start', 8],
-                  top: ['v1', 'top', 0],
-                  bottom: ['v1', 'bottom', 0]
-                },
-                close: { 
-                  end: ['parent', 'end', 16],
-                  top: ['v1', 'top', 0],
-                  bottom: ['v1', 'bottom', 0]
-                }
-            } """
-      ),
-      end = ConstraintSet(
-        """ {
-                background: { 
-                  width: "spread",
-                  height: 250,
-                  start: ['parent', 'start', 0],
-                  end: ['parent', 'end', 0],
-                  top: ['parent', 'top', 0]
-                },
-                v1: { 
-                  width: "spread",
-                  height: 250,
-                  start: ['parent', 'start', 0],
-                  end: ['parent', 'end', 0],
-                  top: ['parent', 'top', 0]
-                },
-                title: { 
-                  width: "spread",
-                  height: 28,
-                  start: ['parent', 'start', 16],
-                  top: ['v1', 'bottom', 16],
-                  end: ['parent', 'end', 16],
-                  custom: {
-                    textSize: 20
-                  }
-                },
-                description: { 
-                  width: "spread",
-                  start: ['parent', 'start', 16],
-                  top: ['title', 'bottom', 8],
-                  end: ['parent', 'end', 16],
-                  custom: {
-                    textSize: 16
-                  }
-                },
-                list: { 
-                  width: "spread",
-                  height: 400,
-                  start: ['parent', 'start', 16],
-                  end: ['parent', 'end', 16],
-                  top: ['description', 'bottom', 16],
-                },
-                play: { 
-                  start: ['parent', 'end', 8],
-                  top: ['v1', 'top', 0],
-                  bottom: ['v1', 'bottom', 0]
-                },
-                close: { 
-                  start: ['parent', 'end', 8],
-                  top: ['v1', 'top', 0],
-                  bottom: ['v1', 'bottom', 0]
-                }
-            } """
-      ),
+      start = getStartConstraint(),
+      end = getEndConstraintSet(),
       progress = progress,
       modifier = Modifier
         .fillMaxSize()
-        .background(Color.White)
+        .background(color = Color(0xFF8A9CAF))
     ) {
       Box(
         modifier = Modifier
           .layoutId("background", "box")
-          .background(Color.Cyan)
+          .background(Color(0xFF263646))
           .clickable(onClick = { animateToEnd = !animateToEnd })
       )
-      Button(
-        onClick = { animateToEnd = !animateToEnd },
+
+      Box(
         modifier = Modifier
           .layoutId("v1", "box")
-          .background(Color.Blue)
-      ) {}
+          .background(Color(0xFF3D6996))
+          .clickable(onClick = { animateToEnd = !animateToEnd })
+      )
 
       Text(
-        text = "MotionLayout in Compose",
+        text = "Wish You Were Here",
         modifier = Modifier.layoutId("title"),
-        color = Color.Black,
+        color = Color(0xFFF3F3F3),
         fontSize = motionProperties("title").value.fontSize("textSize")
       )
+
       Text(
-        text = "Demo screen 17",
+        text = "Pink Floyd",
         modifier = Modifier.layoutId("description"),
-        color = Color.Black,
+        color = Color(0xffdadce0),
         fontSize = motionProperties("description").value.fontSize("textSize")
       )
+
       Box(
         modifier = Modifier
           .layoutId("list", "box")
-          .background(Color.Gray)
+          .background(Color(0xFF1A3652))
       )
+
       Icon(
         Filled.PlayArrow,
         contentDescription = "Play",
-        tint = Color.Black,
+        tint = Color.White,
         modifier = Modifier.layoutId("play")
       )
 
       Icon(
         Filled.Close,
         contentDescription = "Close",
-        tint = Color.Black,
+        tint = Color.White,
         modifier = Modifier.layoutId("close")
       )
     }

@@ -11,7 +11,7 @@ import com.pushpal.minimizeplayer.ui.theme.MinPlayerTheme
 
 @ExperimentalAnimationApi
 @Composable
-fun BasicTimeLine() {
+fun BasicPlayer() {
   MinPlayerSurface(
     color = MinPlayerTheme.colors.uiBackground,
     modifier = Modifier
@@ -22,8 +22,8 @@ fun BasicTimeLine() {
 }
 
 @ExperimentalAnimationApi
-@Preview("Preview Basic TimeLine")
+@Preview("Preview Basic Player")
 @Composable
 fun PreviewBasicTimeLine() {
-  BasicTimeLine()
+  BasicPlayer()
 }
