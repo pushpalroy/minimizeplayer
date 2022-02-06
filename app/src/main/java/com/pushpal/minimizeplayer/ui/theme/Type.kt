@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 // Set of Material typography styles to start with
-val JetLimeTypography = Typography(
+val MinPlayerTypography = Typography(
   subtitle1 = TextStyle(
     fontFamily = FontFamily.Default,
     fontWeight = FontWeight.Bold,

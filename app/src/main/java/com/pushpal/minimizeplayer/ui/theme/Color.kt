@@ -5,7 +5,7 @@ import androidx.compose.ui.graphics.Color
 val White = Color(0xffffffff)
 val GreyBg = Color(0xFF263646)
 val GreyBgDark = Color(0xFF1E2935)
-val JetLimeColor = Color(0xff00ACEE)
+val MinPlayerColor = Color(0xff00ACEE)
 val VeryLightGrey = Color(0xffdadce0)
 val TextPrimary = Color(0xff202124)
 val TextSecondaryDark = Color(0xff212121)

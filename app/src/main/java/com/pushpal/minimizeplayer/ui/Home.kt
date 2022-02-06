@@ -19,16 +19,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.systemBarsPadding
-import com.pushpal.minimizeplayer.ui.theme.JetLimeTheme
-import com.pushpal.minimizeplayer.ui.timelines.AnimatedTimeLine
+import com.pushpal.minimizeplayer.ui.theme.MinPlayerTheme
 import com.pushpal.minimizeplayer.ui.timelines.BasicTimeLine
-import com.pushpal.minimizeplayer.ui.timelines.ModifiedTimeLine
 
 @Composable
 fun HomeScreen() {
   Scaffold(
     modifier = Modifier.systemBarsPadding(),
-    topBar = { HomeAppBar(backgroundColor = JetLimeTheme.colors.uiBorder) }
+    topBar = { HomeAppBar(backgroundColor = MinPlayerTheme.colors.uiBorder) }
   ) {
     HomeContent(
       modifier = Modifier.fillMaxSize()
@@ -48,20 +46,20 @@ fun HomeContent(
   var selectedIndex by remember { mutableStateOf(0) }
   Column(modifier = modifier) {
     ScrollableTabRow(
-      backgroundColor = JetLimeTheme.colors.uiBorder,
-      contentColor = JetLimeTheme.colors.accent,
+      backgroundColor = MinPlayerTheme.colors.uiBorder,
+      contentColor = MinPlayerTheme.colors.accent,
       selectedTabIndex = selectedIndex,
       edgePadding = 16.dp
     ) {
       tabs.forEachIndexed { index, title ->
         Tab(
           selected = index == selectedIndex,
-          selectedContentColor = JetLimeTheme.colors.uiBackground,
+          selectedContentColor = MinPlayerTheme.colors.uiBackground,
           onClick = { selectedIndex = tabs.indexOf(title) },
           text = {
             Text(
               text = title,
-              color = JetLimeTheme.colors.buttonTextColor
+              color = MinPlayerTheme.colors.buttonTextColor
             )
           }
         )
@@ -70,8 +68,6 @@ fun HomeContent(
 
     when (selectedIndex) {
       0 -> BasicTimeLine()
-      1 -> AnimatedTimeLine()
-      2 -> ModifiedTimeLine()
     }
   }
 }
@@ -84,8 +80,8 @@ fun HomeAppBar(
   TopAppBar(
     title = {
       Text(
-        text = "JetLime Samples",
-        color = JetLimeTheme.colors.textSecondaryDark
+        text = "MinPlayer Samples",
+        color = MinPlayerTheme.colors.textSecondaryDark
       )
     },
     backgroundColor = backgroundColor,

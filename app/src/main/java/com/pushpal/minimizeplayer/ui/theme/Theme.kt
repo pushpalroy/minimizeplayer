@@ -14,9 +14,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-private val LightColorPalette = JetLimeColorPalette(
+private val LightColorPalette = MinPlayerColorPalette(
   brand = White,
-  accent = JetLimeColor,
+  accent = MinPlayerColor,
   uiBackground = Neutral0,
   uiBorder = VeryLightGrey,
   uiFloated = FunctionalRed,
@@ -28,7 +28,7 @@ private val LightColorPalette = JetLimeColorPalette(
   buttonTextColor = White
 )
 
-private val DarkColorPalette = JetLimeColorPalette(
+private val DarkColorPalette = MinPlayerColorPalette(
   brand = Shadow1,
   accent = Ocean2,
   uiBackground = GreyBg,
@@ -43,7 +43,7 @@ private val DarkColorPalette = JetLimeColorPalette(
 )
 
 @Composable
-fun JetLimeTheme(
+fun MinPlayerTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
   content: @Composable () -> Unit
 ) {
@@ -56,27 +56,27 @@ fun JetLimeTheme(
     )
   }
 
-  ProvideJetLimeColors(colors) {
+  ProvideMinPlayerColors(colors) {
     MaterialTheme(
       colors = debugColors(darkTheme),
-      typography = JetLimeTypography,
-      shapes = JetLimeShapes,
+      typography = MinPlayerTypography,
+      shapes = MinPlayerShapes,
       content = content
     )
   }
 }
 
-object JetLimeTheme {
-  val colors: JetLimeColorPalette
+object MinPlayerTheme {
+  val colors: MinPlayerColorPalette
     @Composable
-    get() = LocalJetLimeColor.current
+    get() = LocalMinPlayerColor.current
 }
 
 /**
- * JetLime custom Color Palette
+ * MinPlayer custom Color Palette
  */
 @Stable
-class JetLimeColorPalette(
+class MinPlayerColorPalette(
   brand: Color,
   accent: Color,
   uiBackground: Color,
@@ -111,7 +111,7 @@ class JetLimeColorPalette(
   var buttonTextColor by mutableStateOf(buttonTextColor)
     private set
 
-  fun update(other: JetLimeColorPalette) {
+  fun update(other: MinPlayerColorPalette) {
     uiBackground = other.uiBackground
     uiBorder = other.uiBorder
     uiFloated = other.uiFloated
@@ -124,22 +124,22 @@ class JetLimeColorPalette(
 }
 
 @Composable
-fun ProvideJetLimeColors(
-  colors: JetLimeColorPalette,
+fun ProvideMinPlayerColors(
+  colors: MinPlayerColorPalette,
   content: @Composable () -> Unit
 ) {
   val colorPalette = remember { colors }
   colorPalette.update(colors)
-  CompositionLocalProvider(LocalJetLimeColor provides colorPalette, content = content)
+  CompositionLocalProvider(LocalMinPlayerColor provides colorPalette, content = content)
 }
 
-private val LocalJetLimeColor = staticCompositionLocalOf<JetLimeColorPalette> {
-  error("No JetLimeColorPalette provided")
+private val LocalMinPlayerColor = staticCompositionLocalOf<MinPlayerColorPalette> {
+  error("No MinPlayerColorPalette provided")
 }
 
 /**
  * A Material [Colors] implementation which sets all colors to [debugColor] to discourage usage of
- * [MaterialTheme.colors] in preference to [JetLimeTheme.colors].
+ * [MaterialTheme.colors] in preference to [MinPlayerTheme.colors].
  */
 fun debugColors(
   darkTheme: Boolean,

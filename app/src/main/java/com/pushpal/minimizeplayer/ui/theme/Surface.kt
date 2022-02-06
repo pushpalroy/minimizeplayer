@@ -23,11 +23,11 @@ import kotlin.math.ln
  * An alternative to [androidx.compose.material.Surface]
  */
 @Composable
-fun JetLimeSurface(
+fun MinPlayerSurface(
   modifier: Modifier = Modifier,
   shape: Shape = RectangleShape,
-  color: Color = JetLimeTheme.colors.uiBackground,
-  contentColor: Color = JetLimeTheme.colors.textSecondary,
+  color: Color = MinPlayerTheme.colors.uiBackground,
+  contentColor: Color = MinPlayerTheme.colors.textSecondary,
   border: BorderStroke? = null,
   elevation: Dp = 0.dp,
   content: @Composable () -> Unit

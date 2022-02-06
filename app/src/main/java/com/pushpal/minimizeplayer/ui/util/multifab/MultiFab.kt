@@ -26,7 +26,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.pushpal.minimizeplayer.ui.theme.JetLimeTheme
+import com.pushpal.minimizeplayer.ui.theme.MinPlayerTheme
 import com.pushpal.minimizeplayer.ui.util.multifab.MultiFabState.Expand
 
 @ExperimentalAnimationApi
@@ -107,7 +107,7 @@ fun MiniFabItem(
     if (fabOption.showLabel) {
       Text(
         text = item.label,
-        color = JetLimeTheme.colors.uiFloated,
+        color = MinPlayerTheme.colors.uiFloated,
         fontSize = 12.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier

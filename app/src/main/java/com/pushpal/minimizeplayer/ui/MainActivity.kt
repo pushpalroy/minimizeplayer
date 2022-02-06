@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
-import com.pushpal.minimizeplayer.ui.theme.JetLimeTheme
+import com.pushpal.minimizeplayer.ui.theme.MinPlayerTheme
 
 @OptIn(ExperimentalAnimationApi::class)
 class MainActivity : ComponentActivity() {
@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     WindowCompat.setDecorFitsSystemWindows(window, false)
 
     setContent {
-      JetLimeTheme(darkTheme = true) {
+      MinPlayerTheme(darkTheme = true) {
         ProvideWindowInsets {
           HomeScreen()
         }
