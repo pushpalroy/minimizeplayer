@@ -43,8 +43,7 @@ android {
 
 dependencies {
 
-  implementation(project(":jetlime"))
-  //implementation("io.github.pushpalroy:jetlime:1.0.1")
+  implementation(project(":minimizeplayer"))
 
   implementation(DependingOn.Android.material)
 

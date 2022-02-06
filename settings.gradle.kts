@@ -12,6 +12,6 @@ dependencyResolutionManagement {
     mavenCentral()
   }
 }
-rootProject.name = "JetLime"
+rootProject.name = "MinimizePlayer"
 include(":app")
-include(":jetlime")
+include(":minimizeplayer")
