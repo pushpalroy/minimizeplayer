@@ -42,14 +42,14 @@ fun HomeScreen() {
 fun HomeContent(
   modifier: Modifier = Modifier
 ) {
-  val tabs = remember { listOf("Simple", "Animated", "Fancy") }
+  val tabs = remember { listOf("Draggable Player") }
   var selectedIndex by remember { mutableStateOf(0) }
   Column(modifier = modifier) {
     ScrollableTabRow(
       backgroundColor = MinPlayerTheme.colors.uiBorder,
       contentColor = MinPlayerTheme.colors.accent,
       selectedTabIndex = selectedIndex,
-      edgePadding = 16.dp
+      edgePadding = 0.dp
     ) {
       tabs.forEachIndexed { index, title ->
         Tab(
